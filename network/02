@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+paste -s -d '\n' <(networksetup -listallhardwareports | grep -A 1 "Ethernet$") <(ifconfig en0 | grep "inet[^6]" | cut -d " " -f 1,2)

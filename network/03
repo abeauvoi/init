@@ -1,0 +1,1 @@
+networksetup -listallhardwareports | grep "Wi-Fi" -A 2
