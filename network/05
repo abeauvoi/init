@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	printf ">\n\tnslookup slash16.org | head -n 2\n<\n"
+	nslookup slash16.org | head -n 2
+else
+	echo 0
+fi

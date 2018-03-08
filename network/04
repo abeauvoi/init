@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	printf ">\n\troute -n get default | head -n 6\n<\n"
+	route -n get default | head -n 6
+else
+	echo "0"
+fi	
