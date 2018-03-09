@@ -1,7 +1,6 @@
 #!/bin/bash
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	printf ">\n\tpaste -s -d '\\\n' <(networksetup -listallhardwareports | grep -A 1 \"Ethernet$\")\n\t<(ifconfig en0| grep \"inet[^6]\" | cut -d \" \" -f 1,2)\n<\n"
 	paste -s -d '\n' <(networksetup -listallhardwareports | grep -A 1 "Ethernet$") <(ifconfig en0 | grep "inet[^6]" | cut -d " " -f 1,2)
 else
 	echo "0"

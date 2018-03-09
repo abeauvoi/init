@@ -1,4 +1,3 @@
 #!/bin/bash
 
-printf ">\n\tifconfig -l\n<\n"
 ifconfig -l
