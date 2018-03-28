@@ -1,0 +1,1 @@
+iptables --append INPUT --jump REJECT
