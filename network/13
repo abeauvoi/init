@@ -1,0 +1,2 @@
+it is a dhcp server
+#traceroute 10.51.1.253 || nslookup 10.51.1.253

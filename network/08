@@ -1,2 +1,2 @@
 Amazon Technologies, Inc.
-# whois $(whois slash16.org | grep "Name Server" | cut -d '.' -f 2,3,4 | head -n 1) | grep -A 6 "Registrant Name"
+# whois $(whois slash16.org | grep "Name Server" | cut -d '.' -f 2,3,4 | head -n 1) | grep "Registrant Organization"
