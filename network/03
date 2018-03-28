@@ -1,7 +1,3 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	networksetup -listallhardwareports | grep "Wi-Fi" -A 2
-else
-	echo "0"
-fi
+networksetup -listallhardwareports | grep "Wi-Fi" -A 2

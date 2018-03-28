@@ -1,7 +1,3 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	traceroute -q 1 slash16.org
-else
-	echo "0"
-fi
+traceroute -q 1 slash16.org

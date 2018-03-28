@@ -1,7 +1,3 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	dig @8.8.8.8 slash16.org
-else
-	echo "0"
-fi
+dig @8.8.8.8 slash16.org

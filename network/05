@@ -1,7 +1,3 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	nslookup slash16.org | head -n 2
-else
-	echo 0
-fi
+nslookup slash16.org | head -n 2
