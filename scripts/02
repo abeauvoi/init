@@ -1,0 +1,27 @@
+#!/bin/bash
+rm -f ~/update_script.sh
+cat<<-'EOF' > ~/update_script.sh
+#!/bin/bash
+# if not root, run as root
+if [[ $EUID != 0 ]]; then
+        sudo ~/update_script.sh
+        exit
+fi
+
+{
+        echo ">>> $(date)"
+        apt-get update
+        apt-get -y upgrade
+        apt-get -y dist-upgrade
+        apt-get clean
+        apt-get -y autoremove
+        echo "<<<"
+} >> /var/log/update_script.log 2>&1
+EOF
+
+NJF="newjob.txt"
+NJ="0 4 * * 0 /bin/bash ~/update_script.sh"
+crontab -l > NJF
+grep -F "$NJ" NJF || echo "$NJ" >> NJF
+crontab NJF
+rm -f NJF
