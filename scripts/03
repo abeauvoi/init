@@ -1,0 +1,12 @@
+#!/bin/bash
+die () {
+	printf 'Error: %s\n' "$1" >&2
+	exit 1
+}
+if [[ "$#" -ne 1 ]]; then
+	die 'Wrong number of arguments.'
+fi
+if ! [[ -d $1 ]]; then
+	die "$1 is not a directory."
+fi
+ls -Sl $1

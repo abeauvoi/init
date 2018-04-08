@@ -7,7 +7,6 @@ if [[ $EUID != 0 ]]; then
         sudo ~/update_script.sh
         exit
 fi
-
 {
         echo ">>> $(date)"
         apt-get update
@@ -18,10 +17,10 @@ fi
         echo "<<<"
 } >> /var/log/update_script.log 2>&1
 EOF
-
+chmod u+x ~/update_script.sh
 NJF="newjob.txt"
-NJ="0 4 * * 0 /bin/bash ~/update_script.sh"
+NJ="0 4 * * 0 /bin/bash /home/vagrant/update_script.sh"
 crontab -l > NJF
-grep -F "$NJ" NJF || echo "$NJ" >> NJF
+grep -Fqx "$NJ" NJF || echo "$NJ" >> NJF
 crontab NJF
 rm -f NJF

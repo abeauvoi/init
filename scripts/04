@@ -1,0 +1,24 @@
+#!/bin/bash
+NJF="newjob.txt"
+NJ="0 0 * * * /bin/bash /home/vagrant/watch_crontab.sh"
+crontab -l > NJF
+grep -Fqx "$NJ" NJF || echo "$NJ" >> NJF
+crontab NJF
+rm -f NJF
+rm -f /home/vagrant/cronchecksum
+crontab -l | md5sum  > /home/vagrant/cronchecksum
+chmod a-w /home/vagrant/cronchecksum
+rm -f /home/vagrant/watch_crontab.sh
+cat <<'EOF' > ~/watch_crontab.sh
+#!/bin/bash
+	
+s1=$(crontab -l | md5sum)
+s2=$(cat /home/vagrant/cronchecksum)
+
+if [[ "$s1" != "$s2" ]]; then
+	echo "Crontab modified." | mail abeauvoi@student.42.fr
+else
+	echo "No changes."
+fi
+EOF
+chmod +x /home/vagrant/watch_crontab.sh
